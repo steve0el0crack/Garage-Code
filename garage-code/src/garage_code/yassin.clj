@@ -34,5 +34,24 @@ files downloaded over phone lines.")
 ;; definiere den Text als string, dann definiere encode und falls ein Wort laenger als 10 Buchstacen hat dann nimm den ersten Buchstaben dann die Anzahl der Buchstaben minus zwei und nimm den letzten, map nimmt jedes Element und setzt es dann in die vorherige Funktion fuer x ein.
 
 
+;; POBLEM 3 (https://codeforces.com/problemset/problem/231/A) 
+
+(defn tabelle  ;;die Funktion tabelle nimmt n als Argument und wiederholt n mal den Vorgang, welcher zuerst x eine Zahl zwischen 1 und 0 zuordnet und dann weiter zu y geht.
+  [n]
+  (map
+   (fn [x]
+     (map (fn [x]
+                 (rand-int 2))
+          (range 3))) 
+   (range n)))
+
+(defn test ;; Die Funktion test zaehlt die gefilterten Zahlen die goeser als 2 sind. Zuerst nimmt map die einzelnen Zahlen und addiert sie mit reduce zusammen.
+  [n]
+  (count (filter
+          (fn [x] (> x 1))
+          (map (fn [x] (reduce + x)) (tabelle n)))))
+
+(test 100)
+
 
 
