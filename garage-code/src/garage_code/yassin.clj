@@ -53,5 +53,23 @@ files downloaded over phone lines.")
 
 (test 100)
 
+;; PROBLEM 4 (https://codeforces.com/problemset/problem/158/A) 
+
+(def n 10)
+
+(defn foo [n]
+  (map (fn [x]
+         (rand-int 101))
+       (range n)))
+
+(def k (rand-int n))
+(def coll (foo n))
+(def kste (nth coll k))
+
+(count (filter (fn [x] (>= x kste)) coll))
+
+;; n wird als 10 definiert, die Funktion foo bildet das Intervall von eins bis hundert in der n zufaellige Zahlen genommen werden. Range n baute eine Liste. k ist eine beblibige Zahl welche eine der zahlen in der Liste aufgreift. coll greift die werte der funktion auf. kste nimmt die zahl die k gewaehlt hat. filter nimmt alle zahlen die grosser sind als k, diese werden mit count gezahlt. 
+
+
 
 
